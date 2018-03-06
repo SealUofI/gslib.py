@@ -4,6 +4,12 @@ cdef extern from "name.h":
 cdef extern from "types.h":
     str WHEN_LONG_LONG(str)
 
+cdef extern from "c99.h":
+    pass
+
+cdef extern from "fail.h":
+    pass
+
 cdef extern from "comm.h":
     struct comm:
         pass
@@ -15,17 +21,18 @@ cdef extern from "gs_defs.h":
         gs_int,
         gs_long
 
-cdef extern from "c99.h":
-    pass
-
-cdef extern from "fail.h":
-    pass
+    cdef enum gs_op:
+        gs_add,
+        gs_mul,
+        gs_min,
+        gs_max,
+        gs_bpr
 
 cdef extern from "mem.h":
     struct array:
         pass
 
-    ctypedef array buffer
+    ctypedef array buffer_
 
 cdef extern from "gs.h":
     struct gs_data:
@@ -36,3 +43,9 @@ cdef extern from "gs.h":
         gs_pairwise,
         gs_crystal_router,
         gs_all_reduce
+
+    void gs(void *u, gs_dom dom, gs_op op, unsigned transpose,
+        gs_data *gsh, buffer_ *buf)
+
+    void gs_vec(void *u, unsigned vn, gs_dom dom, gs_op op,
+        unsigned transpose, gs_data *gsh, buffer_ *buf)
