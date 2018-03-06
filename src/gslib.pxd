@@ -11,8 +11,15 @@ cdef extern from "fail.h":
     pass
 
 cdef extern from "comm.h":
+    # TODO: Update when using MPI
+    ctypedef int comm_ext
+    ctypedef int comm_req
+
     struct comm:
         pass
+
+    void comm_init(comm *c, comm_ext ec)
+    void comm_free(comm *c)
 
 cdef extern from "gs_defs.h":
     cdef enum gs_dom:
@@ -46,6 +53,5 @@ cdef extern from "gs.h":
 
     void gs(void *u, gs_dom dom, gs_op op, unsigned transpose,
             gs_data *gsh, buffer_ *buf)
-
     void gs_vec(void *u, unsigned vn, gs_dom dom, gs_op op,
                 unsigned transpose, gs_data *gsh, buffer_ *buf)
