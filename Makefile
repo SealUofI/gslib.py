@@ -5,3 +5,7 @@ clean:
 	rm -rf build/
 	rm -rf *.so
 	rm src/*.c
+
+test:
+	flake8
+	flake8 --config .flake8.cython
