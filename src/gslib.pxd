@@ -45,7 +45,7 @@ cdef extern from "gs.h":
         gs_all_reduce
 
     void gs(void *u, gs_dom dom, gs_op op, unsigned transpose,
-        gs_data *gsh, buffer_ *buf)
+            gs_data *gsh, buffer_ *buf)
 
     void gs_vec(void *u, unsigned vn, gs_dom dom, gs_op op,
-        unsigned transpose, gs_data *gsh, buffer_ *buf)
+                unsigned transpose, gs_data *gsh, buffer_ *buf)
