@@ -1,2 +1,1 @@
-cimport gslib
-from gslib cimport comm
+ctypedef void * void_ptr
