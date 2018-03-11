@@ -16,6 +16,8 @@ cdef extern from "comm.h":
     ctypedef int comm_req
 
     struct comm:
+        unsigned int np
+        unsigned int id
         pass
 
     void comm_init(comm *c, comm_ext ec)
@@ -39,7 +41,7 @@ cdef extern from "mem.h":
     struct array:
         pass
 
-    ctypedef array buffer_
+    ctypedef array buffer
 
 cdef extern from "gs.h":
     struct gs_data:
@@ -51,7 +53,9 @@ cdef extern from "gs.h":
         gs_crystal_router,
         gs_all_reduce
 
+    gs_data *gs_setup(long long *id, int n, comm *com,
+                      int unique, gs_method method, int verbose)
     void gs(void *u, gs_dom dom, gs_op op, unsigned transpose,
-            gs_data *gsh, buffer_ *buf)
+            gs_data *gsh, buffer *buf)
     void gs_vec(void *u, unsigned vn, gs_dom dom, gs_op op,
-                unsigned transpose, gs_data *gsh, buffer_ *buf)
+                unsigned transpose, gs_data *gsh, buffer *buf)
