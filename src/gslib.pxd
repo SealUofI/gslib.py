@@ -59,3 +59,6 @@ cdef extern from "gs.h":
             gs_data *gsh, buffer *buf)
     void gs_vec(void *u, unsigned vn, gs_dom dom, gs_op op,
                 unsigned transpose, gs_data *gsh, buffer *buf)
+
+    void gs_unique(slong ∗id, uint n, const struct comm ∗comm)
+    void gs_many(void ∗const ∗u, unsigned k, gs dom dom, gs op op, unsigned transpose , struct gs data ∗gsh , buffer ∗buf)
