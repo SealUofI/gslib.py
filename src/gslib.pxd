@@ -53,7 +53,7 @@ cdef extern from "gs.h":
         gs_crystal_router,
         gs_all_reduce
 
-    gs_data *gs_setup(long long *id, int n, comm *com,
+    gs_data *gslib_gs_setup(int *idd, int n, comm *com,
                       int unique, gs_method method, int verbose)
     void gs(void *u, gs_dom dom, gs_op op, unsigned transpose,
             gs_data *gsh, buffer *buf)
