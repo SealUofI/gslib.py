@@ -1,5 +1,6 @@
 all:
-	python3 setup.py build_ext --inplace -L../gslib/build/lib -I../gslib/src
+	which python3
+	python3 setup.py build_ext --inplace # -L../gslib/build/lib -I../gslib/src
 
 clean:
 	$(RM) -rf build/
