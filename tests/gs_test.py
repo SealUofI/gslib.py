@@ -1,7 +1,12 @@
+import pytest
+
+from gslib_wrapper import GS
+
 def test_gs_init():    
-    from gslib_wrapper import GS
     world = 0
-    gs = gslib_wrapper.GS(world)
+    gs=GS(world)
+    assert gs.get_id()==0
+    assert gs.get_np()==1
 
 """
 np = 1

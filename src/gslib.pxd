@@ -17,7 +17,7 @@ cdef extern from "comm.h":
 
     struct comm:
         unsigned int np
-        unsigned int id_
+        unsigned int id
         pass
 
     void comm_init(comm *c, comm_ext ec)

@@ -19,3 +19,9 @@ cdef class GS(object):
     def setup(self,l):
         pass
         #g=gslib_gs_setup(&idd,1,&self.c,0,gs_auto,1)
+
+    def get_id(self):
+        return self.c.id
+
+    def get_np(self):
+        return self.c.np
