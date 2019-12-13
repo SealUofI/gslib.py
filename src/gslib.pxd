@@ -1,8 +1,8 @@
 cdef extern from "name.h":
-    str PREFIXED_NAME(str)
+    pass
 
 cdef extern from "types.h":
-    str WHEN_LONG_LONG(str)
+    pass
 
 cdef extern from "c99.h":
     pass
@@ -17,7 +17,7 @@ cdef extern from "comm.h":
 
     struct comm:
         unsigned int np
-        unsigned int id
+        unsigned int id_
         pass
 
     void comm_init(comm *c, comm_ext ec)
