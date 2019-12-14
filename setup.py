@@ -3,7 +3,7 @@ from Cython.Build import cythonize
 
 gslib = Extension('gslib_wrapper',
     sources=['src/gslib_wrapper.pyx'],
-    include_dirs=['../gslib/src'],
+    include_dirs=['../gslib/build/include'],
     libraries=['gs'],
     library_dirs=['../gslib/build/lib'],
     extra_link_args=[]
