@@ -14,5 +14,8 @@ setup(name='gslib.py',
     description='gslib.py - Python wrappers for gather scatter library',
     license='MIT',
     packages=find_packages(),
+    install_requires=[
+        'pytest==5.2.2'
+    ],
     ext_modules=cythonize(gslib,language_level=3)
 )
