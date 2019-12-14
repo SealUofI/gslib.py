@@ -5,8 +5,8 @@ NBC ?= 0
 LIBNAME ?= gs
 BLAS ?= 0
 DEBUG ?= 0
-CFLAGS ?= -fPIC # -O2
-FFLAGS ?= -O2
+CFLAGS ?= -O2 -fPIC
+FFLAGS ?= -O2 -fPIC
 CPREFIX ?= gslib_
 FPREFIX ?= fgslib_
 
@@ -42,7 +42,8 @@ ifneq (0,$(ADDUS))
   $(shell printf "#ifndef ${SN}\n#define ${SN}\n#endif\n" >>config.h)
 endif
 
-#SN=GLOBAL_LONG #GLOBAL_LONG_LONG
+# TODO uncomment this
+#SN=GLOBAL_LONG_LONG
 #G:=$(G) -D$(SN)
 #$(shell printf "#ifndef ${SN}\n#define ${SN}\n#endif\n" >>config.h)
 
@@ -122,7 +123,7 @@ tests: $(TESTS)
 clean: ; @$(RM) config.h $(SRCDIR)/*.o $(SRCDIR)/*.s $(SRCDIR)/*.a $(TESTDIR)/*.o $(FTESTDIR)/*.o $(TESTS)
 
 $(TESTS): % : %.c | lib install
-	$(CC) $(CFLAGS) -I$(INSTALL_ROOT)/include $< -o $@ -L$(INSTALL_ROOT)/lib -l$(LIBNAME) -lm $(LDFLAGS) 
+	$(CC) $(CFLAGS) -I$(INSTALL_ROOT)/include $< -o $@ -L$(INSTALL_ROOT)/lib -l$(LIBNAME) -lm $(LDFLAGS)
 
 $(FTESTS): % : %.o | lib install
 	$(FCCMD) $^ -o $@ -L$(SRCDIR) -l$(LIBNAME)
