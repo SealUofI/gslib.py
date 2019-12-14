@@ -22,7 +22,7 @@ def test_gs_setup():
 
     assert gs.is_setup_valid()==True
 
-def test_gs():
+def test_gs_01():
     world=0
     gs=GS(world)
 
@@ -33,3 +33,15 @@ def test_gs():
     gs.gs(values,gs_double,gs_add)
 
     assert np.allclose(values,np.array([4.0,2.0,4.0,4.0]))
+
+def test_gs_02():
+    world=0
+    gs=GS(world)
+
+    ids=np.array([1,2,3,4,5,2,3,6])
+    gs.setup(ids)
+
+    values=np.array([1.0,1.0,1.0,1.0,1.0,-1.0,-1.0,1.0])
+    gs.gs(values,gs_double,gs_add)
+
+    assert np.allclose(values,np.array([1.,0.,0.,1.,1.,0.,0.,1.]))
