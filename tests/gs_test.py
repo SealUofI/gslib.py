@@ -45,3 +45,14 @@ def test_gs_02():
     gs.gs(values,gs_double,gs_add)
 
     assert np.allclose(values,np.array([1.,0.,0.,1.,1.,0.,0.,1.]))
+
+
+if __name__ == "__main__":
+    print('test_gs_init-------------------')
+    test_gs_init()
+    print('test_gs_setup------------------')
+    test_gs_setup()
+    print('test_gs_01---------------------')
+    test_gs_01()
+    print('test_gs_02---------------------')
+    test_gs_02()
