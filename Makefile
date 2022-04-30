@@ -1,13 +1,11 @@
-all:
-	which python3
+all: gslib
 	python3 setup.py build_ext --inplace # -L../gslib/build/lib -I../gslib/src
 
+gslib:
+	$(MAKE) -C ../gslib
+
 clean:
-	$(RM) -rf build/
-	$(RM) -rf *.so
-	$(RM) src/*.c
-	$(RM) src/*.swp
+	$(RM) -rf build/ *.so src/*.c src/*.swp
 
 test:
-	flake8
 	flake8 --config .flake8.cython

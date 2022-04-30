@@ -28,7 +28,7 @@ setup(
         "Topic :: Software Development :: Libraries",
     ],
     python_requires="~=3.8",
-    install_requires=["pytest==5.2.2"],
+    install_requires=["pytest==5.2.2", "Cython==0.29"],
     extras_require={"dev": ["pytest", "black", "isort"]},
     url="https://github.com/SealUofI/gslib.py",
     license="MIT",
