@@ -1,16 +1,10 @@
-from gslib cimport comm,comm_init,comm_free
-
-from gslib cimport gs_data,gslib_gs_setup,gslib_gs
-
-from gslib cimport gs_auto,gs_pairwise,gs_crystal_router,\
-    gs_all_reduce
-
-from gslib cimport _gs_double,_gs_float,_gs_int,_gs_long
-
-from gslib cimport _gs_add,_gs_mul,_gs_min,_gs_max,_gs_bpr
-
 cimport cython
-from libc.stdlib cimport malloc,free
+from gslib cimport (_gs_add, _gs_bpr, _gs_double, _gs_float, _gs_int, _gs_long,
+                    _gs_max, _gs_min, _gs_mul, comm, comm_free, comm_init,
+                    gs_all_reduce, gs_auto, gs_crystal_router, gs_data,
+                    gs_pairwise, gslib_gs, gslib_gs_setup)
+from libc.stdlib cimport free, malloc
+
 
 cpdef enum gs_dom:
     gs_double=_gs_double
