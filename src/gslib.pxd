@@ -1,3 +1,6 @@
+cimport mpi4py.libmpi as libmpi
+
+
 cdef extern from "config.h":
     pass
 
@@ -34,9 +37,8 @@ cdef extern from "gs_defs.h":
         _gs_bpr 'gs_bpr'
 
 cdef extern from "comm.h":
-    # TODO: Update when using MPI
-    ctypedef int comm_ext
-    ctypedef int comm_req
+    ctypedef libmpi.MPI_Comm comm_ext
+    ctypedef libmpi.MPI_Request comm_req
 
     struct comm:
         unsigned int np

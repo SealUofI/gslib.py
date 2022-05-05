@@ -1,5 +1,9 @@
+import os
 from Cython.Build import cythonize
 from setuptools import Extension, find_packages, setup
+
+mpi_compile_info = os.popen("mpicc -compile_info").read().strip().split(" ")
+mpi_link_info = os.popen("mpicc -link_info").read().strip().split(" ")
 
 gslib = Extension(
     "gslib_wrapper",
@@ -7,7 +11,8 @@ gslib = Extension(
     include_dirs=["../gslib/build/include"],
     libraries=["gs"],
     library_dirs=["../gslib/build/lib"],
-    extra_link_args=[],
+    extra_compile_args=mpi_compile_info[1:],
+    extra_link_args=mpi_link_info[1:],
 )
 
 setup(

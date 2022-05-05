@@ -1,4 +1,5 @@
 cimport cython
+cimport mpi4py.MPI as MPI
 from gslib cimport (_gs_add, _gs_bpr, _gs_double, _gs_float, _gs_int, _gs_long,
                     _gs_max, _gs_min, _gs_mul, comm, comm_free, comm_init,
                     gs_all_reduce, gs_auto, gs_crystal_router, gs_data,
@@ -25,8 +26,8 @@ cdef class GS(object):
     cdef int *idd
     cdef gs_data *g
 
-    def __cinit__(self,ec=0):
-        comm_init(&self.c,ec)
+    def __cinit__(self, MPI.Comm ec):
+        comm_init(&self.c, ec.ob_mpi)
 
     def __dealloc__(self):
         comm_free(&self.c)
